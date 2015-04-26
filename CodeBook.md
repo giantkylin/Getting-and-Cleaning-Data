@@ -45,20 +45,36 @@ The following files are available for the train and test data. Their description
 
 
 ## Transformation details
+###how to use run_analysis.R
 
-There are 5 parts:
+1. Download the data source and put into a folder. 
+2. Set the folder as your working directory using setwd() function in RStudio.
+3. Unzip the file and you'll have a UCI HAR Dataset folder.
+4. Make sure run_analysis.R is in the working direcory. 
+5. Run source("run_analysis.R"), then it will generate a new file result_tidy.txt in your working directory
 
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive activity names.
-5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+###run_analysis.R walkthrough step by step.
 
-## How ```run_analysis.R``` implements the above steps:
+Step 1:
+import proper libraries.
 
-* Require ```dplyr``` and ```data.table``` librareis.
-* Load both test and train data
-* Load the features and activity labels.
-* Extract the mean and standard deviation column names and data.
-* Process the data. There are two parts processing test and train data respectively.
-* Merge data set.
+Step 2:
+set working directory in case no exteral set
+
+Step 3:
+Read all the test and training files: y_test.txt, subject_test.txt and X_test.txt.
+Read the features from features.txt and filter it to only leave features that are either means ("mean()") or standard deviations ("std()"). 
+Read the activity labels from activity_labels.txt and replace the numbers with the text.
+
+Step 4:
+Combine the files to a data frame in the form of subjects, labels, the rest of the data.
+A new data frame is then created that includes subjects, labels and the described features.
+
+Step 5:
+Remove all non-alphanumeric characters and apply the now-good-columnnames to the data frame.
+
+Step 6:
+Create a new data frame by finding the mean for each combination of subject and label by aggregate() function.
+
+Step 7:
+Write the new tidy set into a text file called result_tidy.txt, formatted similarly to the original files.
