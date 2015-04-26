@@ -4,9 +4,9 @@
 library(data.table)
 library(dplyr)
 
-# set working directory
-wd <- "C:\\Users\\lenovo\\workspace\\GD\\project"
-setwd(wd)
+# set working directory if not set separately
+#wd <- "C:\\Users\\lenovo\\workspace\\GD\\project"
+#setwd(wd)
 
 # number of rows to test
 nrows = -1
