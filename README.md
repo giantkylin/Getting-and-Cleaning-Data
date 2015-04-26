@@ -34,6 +34,7 @@ The output is created in working directory with the name of result_tidy.txt
 5. Run source("run_analysis.R"), then it will generate a new file result_tidy.txt in your working directory
 
 **run_analysis.R walkthrough step by step.**
+
 Step 1:
 import proper libraries.
 
